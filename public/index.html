@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertitore File Audio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="darkModeToggle">
+        <span id="sunIcon">☀️</span>
+        <span id="moonIcon" style="display:none;">🌙</span>
+    </button>
+    <div class="container">
+        <h1>Convertitore File Audio</h1>
+        <h2>Carica il tuo file audio e scegli il formato di output</h2>
+        <form id="uploadForm" action="/convert" method="post" enctype="multipart/form-data">
+            <label for="audioFile">Scegli un file audio:</label>
+            <input type="file" id="audioFile" name="audioFile" accept="audio/*" required>
+            
+            <label for="format">Formato di output:</label>
+            <select id="format" name="format">
+                <option value="mp3">MP3</option>
+                <option value="wav">WAV</option>
+                <option value="ogg">OGG</option>
+                <option value="flac">FLAC</option>
+                <option value="aac">AAC</option>
+                <option value="m4a">M4A</option>
+                <option value="wma">WMA</option>
+                <option value="alac">ALAC</option>
+                <option value="aiff">AIFF</option>
+            </select>
+            
+            <label for="quality">Qualità di output:</label>
+            <select id="quality" name="quality">
+                <option value="high">Alta</option>
+                <option value="medium">Media</option>
+                <option value="low">Bassa</option>
+            </select>
+            
+            <button type="submit">Converti</button>
+        </form>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        // Gestione della modalità scura
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            document.getElementById('sunIcon').style.display = isDarkMode ? 'none' : 'inline';
+            document.getElementById('moonIcon').style.display = isDarkMode ? 'inline' : 'none';
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+
+            fetch('/convert', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'converted-file';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            })
+            .catch(error => {
+                console.error('Errore durante la richiesta:', error);
+                const messageDiv = document.getElementById('message');
+                messageDiv.textContent = 'Errore durante la conversione del file.';
+                messageDiv.className = 'message error';
+            });
+        });
+    </script>
+</body>
+</html>

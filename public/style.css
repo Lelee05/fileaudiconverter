@@ -1,0 +1,155 @@
+/* Reset di base per margini e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo della pagina */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font professionale */
+    background-color: #f4f4f4; /* Colore di sfondo chiaro */
+    color: #333; /* Colore del testo scuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Contenitore principale */
+.container {
+    background-color: #fff; /* Sfondo bianco per il contenitore */
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd; /* Bordo grigio chiaro */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Titolo */
+h1 {
+    color: #ff0000; /* Titolo rosso */
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Sottotitolo */
+h2 {
+    color: #555; /* Colore del sottotitolo grigio scuro */
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* Etichette e input */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #333; /* Colore delle etichette scuro */
+}
+
+input[type="file"],
+select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc; /* Bordo grigio chiaro per gli input */
+    border-radius: 4px;
+    background-color: #fff; /* Sfondo bianco per gli input */
+    color: #333; /* Testo scuro per gli input */
+    transition: border-color 0.2s;
+}
+
+input[type="file"]:focus,
+select:focus {
+    border-color: #ff0000; /* Colore del bordo rosso al focus */
+}
+
+/* Bottone di invio */
+button {
+    background-color: #ff0000; /* Sfondo rosso per il bottone */
+    color: #fff; /* Testo bottone bianco */
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #cc0000; /* Rosso scuro al passaggio del mouse */
+}
+
+/* Messaggi di errore e successo */
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Modalità scura */
+body.dark-mode {
+    background-color: #121212; /* Colore di sfondo scuro */
+    color: #e0e0e0; /* Colore del testo chiaro */
+}
+
+body.dark-mode .container {
+    background-color: #1e1e1e; /* Sfondo scuro per il contenitore */
+    border: 1px solid #333; /* Bordo grigio scuro */
+}
+
+body.dark-mode h1 {
+    color: #ff6f6f; /* Titolo rosso chiaro nella modalità scura */
+}
+
+body.dark-mode h2 {
+    color: #ccc; /* Colore del sottotitolo chiaro */
+}
+
+body.dark-mode label {
+    color: #e0e0e0; /* Colore delle etichette chiaro */
+}
+
+body.dark-mode input[type="file"],
+body.dark-mode select {
+    background-color: #333; /* Sfondo scuro per gli input */
+    color: #e0e0e0; /* Testo chiaro per gli input */
+    border-color: #555; /* Bordo grigio scuro per gli input */
+}
+
+body.dark-mode input[type="file"]:focus,
+body.dark-mode select:focus {
+    border-color: #ff6f6f; /* Colore del bordo rosso chiaro al focus */
+}
+
+body.dark-mode button {
+    background-color: #cc0000; /* Sfondo rosso scuro per il bottone */
+}
+
+body.dark-mode button:hover {
+    background-color: #990000; /* Rosso molto scuro al passaggio del mouse */
+}
+
+/* Pulsante modalità scura */
+#darkModeToggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    color: #ff0000; /* Cambia colore al passaggio del mouse */
+}
